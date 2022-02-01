@@ -45,7 +45,21 @@ public class RequestParamController {
     @ResponseBody // 리턴 String을 응답 메시지로 바로 전달한다
     @RequestMapping("/request-param-v4")
     public String requestParamV4(String username, int age) {
-        // @RequestParam를 아예 생략할 수 있다. 단, 요청 파라미터로 넘어오는 이름과 파라미터의 변수명이 같아야 한다.
+        // 파라미터 정보가 단순 타입(String, int, Integer)이면 @RequestParam를 아예 생략할 수 있다.
+        // 단, 요청 파라미터로 넘어오는 이름과 파라미터의 변수명이 같아야 한다.
+
+        log.info("username={}, age={}", username, age);
+        return "OK!";
+    }
+
+    // 필수 파라미터를 지정하는 required 사용 예제
+    @ResponseBody // 리턴 String을 응답 메시지로 바로 전달한다
+    @RequestMapping("/request-param-required")
+    public String requestParamRequired(
+            // required ture일 경우, 해당 데이터가 요청 파라미터에 필수로 포함되어야 한다.
+            // required는 기본값이 true다.
+            @RequestParam(required = true) String username,
+            @RequestParam(required = false) Integer age) { // 기본형인 int는 null 불가
 
         log.info("username={}, age={}", username, age);
         return "OK!";
