@@ -1,9 +1,6 @@
 package hello.springmvc.basic.requestmapping;
 
-
 import org.springframework.web.bind.annotation.*;
-
-
 /**
  * 회원 관리 API
  * 회원 목록 조회: GET - /users
