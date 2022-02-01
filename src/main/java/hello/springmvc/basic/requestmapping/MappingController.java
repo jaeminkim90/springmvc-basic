@@ -34,6 +34,7 @@ public class MappingController {
 
     /**
      * method 특정 HTTP 메서드 축약 애노테이션
+     *
      * @GetMapping
      * @PostMapping
      * @PutMapping
@@ -49,6 +50,7 @@ public class MappingController {
     /**
      * PathVariable(경로 변수) 사용
      * 변수명이 같으면 생략 가능
+     *
      * @PathVariable("userId") String userId -> @PathVariable userId
      */
     @GetMapping("/mapping/{userid}")
@@ -82,9 +84,8 @@ public class MappingController {
         return "ok";
     }
 
-
     /**
-     *특정 헤더 조건으로 추가 매핑 - 헤더 정보로 추가 조건을 부여할 수 있다
+     * 특정 헤더 조건으로 추가 매핑 - 헤더 정보로 추가 조건을 부여할 수 있다
      * headers="mode",
      * headers="!mode"
      * headers="mode=debug"
