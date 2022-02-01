@@ -64,4 +64,16 @@ public class RequestParamController {
         log.info("username={}, age={}", username, age);
         return "OK!";
     }
+
+    // 파라미터 값이 없을 때, 기본값을 지정하는 defaultValue
+    @ResponseBody // 리턴 String을 응답 메시지로 바로 전달한다
+    @RequestMapping("/request-param-default")
+    public String requestParamDefault(
+            // defaultValue가 있으면, 항상 기본값이 존재하기 때문에 required 옵션은 무의미해진다.
+            @RequestParam(required = true, defaultValue = "guest") String username,
+            @RequestParam(required = false, defaultValue = "-1") int age) {
+
+        log.info("username={}, age={}", username, age);
+        return "OK!";
+    }
 }
