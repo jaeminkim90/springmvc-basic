@@ -75,4 +75,20 @@ public class RequestBodyJsonController {
         log.info("username={}, age={}", data.getUsername(), data.getAge());
         return "ok";
     }
+
+    /**
+     * @RequestBody 생략 불가능(@ModelAttribute 가 적용되어 버림)
+     * HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter
+     * (content-type: application/json)
+     *
+     * @ResponseBody 적용
+     * - 메시지 바디 정보 직접 반환(view 조회X)
+     * - HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter 적용(Accept: application/json)
+     */
+    @ResponseBody
+    @PostMapping("/request-body-json-v5")
+    public HelloData requestBodyJsonV5(@RequestBody HelloData data) {
+        log.info("username={}, age={}", data.getUsername(), data.getAge());
+        return data;
+    }
 }
