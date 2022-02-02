@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 
@@ -30,7 +29,6 @@ public class RequestBodyStringController {
 
         response.getWriter().write("OK!!");
     }
-
 
     /**
      * InputStream(Reader): HTTP 요청 메시지 바디의 내용을 직접 조회
@@ -66,10 +64,12 @@ public class RequestBodyStringController {
     /**
      * @RequestBody
      * - 메시지 바디 정보를 직접 조회(@RequestParam X, @ModelAttribute X)
-     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용 *
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용
+     *
      * @ResponseBody
      * - 메시지 바디 정보 직접 반환(view 조회X)
-     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용 */
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용
+     */
     @ResponseBody
     @PostMapping("/request-body-string-v4")
     public String requestBodyStringV4(@RequestBody String messageBody) {
