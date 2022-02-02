@@ -24,4 +24,9 @@ public class ResponseViewController {
         return "/response/hello";
     }
 
+    // 컨트롤러의 @RequestMapping 경로와 View의 논리적 이름이 같으면 반환을 void로 지정해도 View가 랜더가 된다.
+    @RequestMapping("/response/hello")
+    public void responseViewV3(Model model) {
+        model.addAttribute("data", "hello!");
+    }
 }
